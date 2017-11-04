@@ -14,23 +14,28 @@
         <% if current_user %>
         <li class="dropdown">
           <%= link_to root_path do %>
-          <i class="fa fa-users fa-fw"></i> Ultimas preguntas
+          <i class="fa fa-question-circle fa-fw"></i> Ultimas preguntas
           <% end %>
         </li>
         <li class="dropdown">
-          <%= link_to root_path do %>
-          <i class="fa fa-connectdevelop fa-fw"></i> Preguntar
+          <%= link_to new_question_path do %>
+          <i class="fa fa-question fa-fw"></i> Preguntar
           <% end %>
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-user fa-fw"></i>
-            <span class="hidden-xs"><%= current_user.email %> <i class="fa fa-caret-down"></i></span>
+            <span class="hidden-xs"><%= current_user.nombre %> <i class="fa fa-caret-down"></i></span>
           </a>
           <ul class="dropdown-menu dropdown-user">
             <li>
+              <%= link_to my_perfil_users_path do %>
+              <i class="fa fa-user-circle-o fa-fw"></i> Mi Perfíl
+              <% end %>
+            </li>
+            <li>
               <%= link_to edit_user_registration_path do %>
-              <i class="fa fa-user-circle-o fa-fw"></i> Editar Perfíl
+              <i class="fa fa-gears fa-fw"></i> Configuración
               <% end %>
             </li>
             <li class="divider"></li>
