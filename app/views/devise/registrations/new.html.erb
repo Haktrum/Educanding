@@ -1,0 +1,53 @@
+<div class='row'>
+  <div class='col-sm-6 col-sm-offset-3'>
+    <div class='panel panel-default'>
+      <div class='panel-body'>
+        <h2>Sign up</h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="field margen-5">
+            <%= f.label :nombre, class:"label-control"  %><br />
+            <%= f.text_field :nombre, autofocus: true, class:"form-control" %>
+          </div>
+
+          <div class="field margen-5">
+            <%= f.label :apellido, class:"label-control"  %><br />
+            <%= f.text_field :apellido, autofocus: true, class:"form-control" %>
+          </div>
+
+          <div class="field margen-5">
+            <%= f.label :email, class:"label-control"  %><br />
+            <%= f.email_field :email, autofocus: true, class:"form-control" %>
+          </div>
+
+          <div class="field margen-5">
+            <%= f.label :faculty_id, class:"label-control"  %><br />
+            <%= f.collection_select :faculty_id, Faculty.all, :id, :name, {}, class:"form-control"%>
+          </div>
+
+          <div class="field margen-5">
+            <%= f.label :password, class:"label-control"  %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+          </div>
+
+          <div class="field margen-5">
+            <%= f.label :password_confirmation, class:"label-control"  %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
+          </div>
+
+          <div class="actions margen-5">
+            <%= f.submit "Sign up", class:"btn btn-primary btn-lg btn-block" %>
+          </div>
+
+        <% end %>
+
+        <%#= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
