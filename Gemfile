@@ -19,6 +19,7 @@ gem 'will_paginate'
 gem 'draper'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'select2-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

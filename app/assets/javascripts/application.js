@@ -14,4 +14,5 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require select2-full
 //= require_tree .
