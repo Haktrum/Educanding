@@ -1,0 +1,6 @@
+<div class="answer_<%= answer.id %>">
+  <%= link_to answer.user.nombre, user_path(answer.user_id) %>
+  <div class="panel-body">
+    <%= answer.body %>
+  </div>
+</div>

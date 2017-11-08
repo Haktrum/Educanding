@@ -1,0 +1,7 @@
+<%= form_for @answer, url:question_answers_path(@question, @answer) do |f| %>
+  <div class="form-group">
+    <%= f.label :body, class: 'control-label'%>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Publicar', class: 'btn btn-success' %>
+<% end %>

@@ -30,6 +30,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new(question: @question, user: current_user)
   end
 
   def index

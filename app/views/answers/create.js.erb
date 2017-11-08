@@ -1,0 +1,5 @@
+$('#answer_form_container').html('<%= j render 'answers/form' %>');
+<% if @created_answer.present? %>
+  $('#answers_container').append('<%= j render 'answer', answer: @created_answer %>');
+  $('#answer_<%=@created_answer.id %>').hide().fadeIn();
+<% end %>

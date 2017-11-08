@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     get :my_perfil, on: :collection
   end
 
-  resources :questions
-  resources :answers, only: [:destroy, :create, :update]
+  resources :questions do
+    resources :answers, only: [:destroy, :create, :update]
+  end
 
   get 'main/welcome'
   root "main#welcome"

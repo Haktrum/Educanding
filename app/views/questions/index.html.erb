@@ -1,2 +1,28 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<div class='row'>
+  <div class='col-sm-10 col-sm-offset-1'>
+    <table class='table table-bordered table-hover'>
+      <thead>
+        <tr>
+          <th width="15%" class="text-center">Usuario</th>
+          <th width="70%" class="text-center">Pregunta</th>
+          <th width="15%" class="text-center">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @questions.each do |q| %>
+          <tr>
+            <td>
+              <%= q.user.nombre %>
+            </td>
+            <td>
+              <%= q.title %>
+            </td>
+            <td class='text-center'>
+              <%= link_to 'Ver', question_path(q), class: 'btn btn-info' %>
+            </dt>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

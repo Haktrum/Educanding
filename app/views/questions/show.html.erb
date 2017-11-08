@@ -1,2 +1,19 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<div class='row'>
+  <div class='col-sm-10 col-sm-offset-1'>
+    <div class='panel panel-default'>
+      <div class='panel-body'>
+        <%= render @question %>
+      </div>
+    </div>
+    <div class="col-sm-11 col-sm-offset-1">
+      <div class="list-group">
+        <div id="answers_container">
+          <%= render @question.answers %>
+        </div>
+        <div class="panel-body" id="answer_form_container">
+          <%= render 'answers/form'%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
