@@ -4,15 +4,15 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     if @answer.save
       @created_answer = @answer
-      @answer = Answer.new(question: @answer.question)
+      @answer = Answer.new(question: @answer.question, user: current_user)
     end
-    redirect_to @answer.question
+    @answer_comment = AnswerComment.new(user: current_user)
   end
 
   private
 
   def answer_params
-    param_answer = params.require(:answer).permit(:body)
-    param_answer.merge(question_id: params[:question_id], user: current_user)
+    param_answer = params.require(:answer).permit(:body, :question_id)
+    param_answer.merge(user: current_user)
   end
 end

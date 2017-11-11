@@ -1,7 +1,7 @@
-<%= form_for @answer, url:answers_path, remote: true do |f| %>
+<%= form_for @question_comment, url:question_comments_path, remote: true do |f| %>
   <%= f.hidden_field :question_id, class: 'form-control' %>
   <div class="form-group">
     <%= f.text_area :body, class: 'form-control' %>
   </div>
-  <%= f.submit 'Responder', class: 'btn btn-success' %>
+  <%= f.submit 'Comentar', class: 'btn btn-success' %>
 <% end %>

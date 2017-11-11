@@ -8,20 +8,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    #Funciona, pero quedo para el orto el como lo hago.
     @question = Question.new(question_params.merge(user: current_user))
-    tags = params[:question][:tags]
-    tags = tags.last(tags.size - 1)
-    if tags.size > 5
-      flash[:alert] = "Demasiadas etiquetas (Max 5)"
-    elsif tags.size < 1
-      flash[:alert] = "Ingrese etiquetas (Min 1)"
-    end
-    if @question.valid? && !flash[:alert]
-      @question.save
-      tags.each do |tag|
-        QuestionTag.create(question: @question, tag_id: tag)
-      end
+    if @question.save
       redirect_to @question
     else
       render :new
@@ -30,7 +18,9 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answer = Answer.new(question: @question, user: current_user)
+    @answer = Answer.new(question: @question)
+    @question_comment = QuestionComment.new(question: @question)
+    @answer_comment = Answer.new()
   end
 
   def index
@@ -40,6 +30,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :body, :faculty_id)
+    params.require(:question).permit(:title, :body, :faculty_id, tag_ids: [])
   end
 end

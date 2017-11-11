@@ -1,0 +1,5 @@
+$('#answer_comment_form_<%= @answer_comment.answer.id%>').html('<%= j render partial:'answer_comments/form', locals:{answer: @answer_comment.answer} %>');
+<% if @created_answer_comment.present? %>
+  $('#answer_comments_of_<%=@created_answer_comment.answer.id%>').append('<%= j render @created_answer_comment.decorate %>');
+  $('#<%= dom_id @created_answer_comment%>').hide().fadeIn();
+<% end %>

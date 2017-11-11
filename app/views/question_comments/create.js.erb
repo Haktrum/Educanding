@@ -1,0 +1,5 @@
+$('#question_comment_form').html('<%= j render "question_comments/form" %>');
+<% if @created_question_comment.present? %>
+  $('#question_comments_container').append('<%= j render @created_question_comment.decorate %>');
+  $('#question_comment_<%=@created_question_comment.id %>').hide().fadeIn();
+<% end %>

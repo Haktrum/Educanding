@@ -19,9 +19,7 @@
     <%= f.collection_select :faculty_id, Faculty.all, :id, :name, {}, class:"form-control"%>
   </div>
   <div class="field margen-5">
-    <!-- Averiguar más de Select2 y como funciona bien este select -->
-    <!-- Esto hay que agarrarlo con pinzas -->
-    <%= f.label :tags, class:"label-control"  %><br />
+    <%= f.label :tag_ids, class:"label-control"  %><br />
     <script>
       $(document).ready(function() {
         $("#list-tags").select2({
@@ -29,7 +27,10 @@
         });
       });
     </script>
-    <%= f.select(:tags, Tag.all.collect{|t| [ t.name, t.id ]}, {}, class: "form-control", multiple:"multiple", id: "list-tags") %>
+    <%= f.collection_select :tag_ids, Tag.all, :id, :name, {},
+      class: "form-control",
+      multiple: "multiple",
+      id: "list-tags" %>
   </div>
-  <%= f.submit 'Publicar', class: 'btn btn-success' %>
+  <%= f.submit 'Publicar', class: 'btn btn-success margen-5' %>
 <% end %>

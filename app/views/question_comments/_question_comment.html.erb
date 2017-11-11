@@ -1,0 +1,16 @@
+<li class="list-group-item" id="question_comment_<%= question_comment.id %>">
+  <%= link_to question_comment.user.username, user_path(question_comment.user_id) %>
+  <div class="panel-body">
+    <%= question_comment.body %>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-6">
+      <%= question_comment.publish_at %>
+    </div>
+    <div class="col-md-6 text-right">
+      <i class="fa fa-thumbs-o-down fa- fa-2x fa-flip-horizontal fa-fw"></i>
+      votos
+      <i class="fa fa-thumbs-o-up fa-2x fa-fw"></i>
+    </div>
+  </div>
+</li>

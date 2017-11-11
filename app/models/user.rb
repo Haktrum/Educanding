@@ -7,6 +7,8 @@ class User < ApplicationRecord
   #Associations
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
+  has_many :question_comments, dependent: :destroy
+  has_many :answer_comments, dependent: :destroy
 
   # Validates
   validates :nombre, presence: true
@@ -15,4 +17,8 @@ class User < ApplicationRecord
 
   # Scopes
 
+  def username
+    name = nombre + " " + apellido
+    name
+  end
 end

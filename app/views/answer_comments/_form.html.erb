@@ -1,0 +1,7 @@
+<%= form_for @answer_comment, as: :answer_comment, url:answer_comments_path, remote: true do |f| %>
+  <%= f.hidden_field :answer_id, value: answer.id, class: 'form-control' %>
+  <div class="form-group">
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Comentar', class: 'btn btn-success' %>
+<% end %>

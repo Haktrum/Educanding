@@ -1,4 +1,4 @@
-class AnswerDecorator < Draper::Decorator
+class QuestionCommentDecorator < Draper::Decorator
   delegate_all
 
   def publish_at

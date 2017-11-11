@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     get :my_perfil, on: :collection
   end
 
-  resources :questions do
-    resources :answers, only: [:destroy, :create, :update]
-  end
+  resources :questions
+  resources :answers, only: [:destroy, :create, :update]
+  resources :answer_comments, only: [:index, :destroy, :create, :update]
+  resources :question_comments, only: [:index, :destroy, :create, :update]
+  resources :tags
 
   get 'main/welcome'
   root "main#welcome"
