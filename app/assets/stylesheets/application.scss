@@ -17,3 +17,12 @@
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+button[name="voto[positive]"] {
+  border: none;
+  background: none;
+}
+
+[id^=new_voto], [id^=edit_voto] {
+  display: inline;
+}

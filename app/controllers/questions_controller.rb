@@ -21,6 +21,8 @@ class QuestionsController < ApplicationController
     @answer = Answer.new(question: @question)
     @question_comment = QuestionComment.new(question: @question)
     @answer_comment = Answer.new()
+    @voto = @question.votos.find_by(user: current_user) || Voto.new(user: current_user, votable: @question)
+    @votos = @question.votos.group(:positive).count
   end
 
   def index
