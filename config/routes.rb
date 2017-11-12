@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :questions
-  resources :answers, only: [:destroy, :create, :update]
+  resources :answers, only: [:show, :destroy, :create, :update]
   resources :answer_comments, only: [:index, :destroy, :create, :update]
   resources :question_comments, only: [:index, :destroy, :create, :update]
   resources :tags

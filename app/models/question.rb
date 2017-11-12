@@ -1,4 +1,4 @@
-class Question < ApplicationRecord
+class Question < Votable
   #Validations
   validates :title, presence: true
   validates :body, presence: true
@@ -11,5 +11,4 @@ class Question < ApplicationRecord
   has_many :question_tags, dependent: :destroy
   has_many :tags, through: :question_tags
   has_many :question_comments, dependent: :destroy
-  has_many :votes, as: :votable, dependent: :destroy
 end

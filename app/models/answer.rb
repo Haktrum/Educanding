@@ -1,4 +1,4 @@
-class Answer < ApplicationRecord
+class Answer < Votable
   #Validations
   validates :body, presence: true
 
@@ -6,5 +6,4 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
   has_many :answer_comments, dependent: :destroy
-  has_many :votes, as: :votable
 end

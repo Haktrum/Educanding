@@ -11,9 +11,7 @@
       <a data-toggle="collapse" href="#ver_comments_<%=answer.id%>" aria-expanded="false" aria-controls="ver_comments_<%=answer.id%>">
         <i class="fa fa-comments fa-2x fa-fw"></i>
       </a>
-      <i class="fa fa-thumbs-o-down fa- fa-2x fa-flip-horizontal fa-fw"></i>
-      votos
-      <i class="fa fa-thumbs-o-up fa-2x fa-fw"></i>
+      <%= render partial: 'votes/vote', object: answer.vote(current_user) %>
     </div>
     <div class="collapse col-md-offset-1 col-md-11" id="ver_comments_<%=answer.id%>">
       <h5><b>Comentarios</b></h5>
