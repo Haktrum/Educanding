@@ -22,7 +22,8 @@ class QuestionsController < ApplicationController
     @question_comment = QuestionComment.new(question: @question)
     @answer_comment = Answer.new()
     @voto = @question.votos.find_by(user: current_user) || Voto.new(user: current_user, votable: @question)
-    @votos = @question.votos.group(:positive).count
+    votos = @question.votos.group(:positive).count
+    @votos = (votos[true] || 0) - 10 * (votos[false] || 0)
   end
 
   def index
