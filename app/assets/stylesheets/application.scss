@@ -18,11 +18,11 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-button[name="voto[positive]"] {
+button[name="vote[positive]"] {
   border: none;
   background: none;
 }
 
-[id^=new_voto], [id^=edit_voto] {
+[id^=new_vote], [id^=edit_vote] {
   display: inline;
 }

@@ -101,15 +101,15 @@ ActiveRecord::Schema.define(version: 20171112005939) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "votos", force: :cascade do |t|
+  create_table "votes", force: :cascade do |t|
     t.bigint "user_id"
     t.string "votable_type"
     t.bigint "votable_id"
     t.boolean "positive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_votos_on_user_id"
-    t.index ["votable_type", "votable_id"], name: "index_votos_on_votable_type_and_votable_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
   end
 
   add_foreign_key "answer_comments", "answers"
@@ -123,5 +123,5 @@ ActiveRecord::Schema.define(version: 20171112005939) do
   add_foreign_key "questions", "faculties"
   add_foreign_key "questions", "users"
   add_foreign_key "users", "faculties"
-  add_foreign_key "votos", "users"
+  add_foreign_key "votes", "users"
 end

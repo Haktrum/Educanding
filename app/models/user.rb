@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :question_comments, dependent: :destroy
   has_many :answer_comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   # Validates
   validates :nombre, presence: true

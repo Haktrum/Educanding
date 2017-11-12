@@ -1,0 +1,8 @@
+<%= form_for @vote, remote: false do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :votable_id %>
+  <%= f.hidden_field :votable_type %>
+  <%= f.button '', :value => 'false', :name => 'vote[positive]', :class => "fa fa-thumbs-o-down fa- fa-2x fa-flip-horizontal fa-fw" %>
+  <%= @votes %> votes
+  <%= f.button '', :value => 'true', :name => 'vote[positive]', :class => "fa fa-thumbs-o-up fa-2x fa-fw" %>
+<% end %>

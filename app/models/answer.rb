@@ -6,5 +6,5 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
   has_many :answer_comments, dependent: :destroy
-  has_many :votos, as: :votable
+  has_many :votes, as: :votable
 end

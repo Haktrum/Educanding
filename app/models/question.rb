@@ -11,5 +11,5 @@ class Question < ApplicationRecord
   has_many :question_tags, dependent: :destroy
   has_many :tags, through: :question_tags
   has_many :question_comments, dependent: :destroy
-  has_many :votos, as: :votable
+  has_many :votes, as: :votable, dependent: :destroy
 end
