@@ -1,0 +1,3 @@
+document.forms.<%= @vote.votable_type_id %>_vote.outerHTML = (
+  "<%= escape_javascript(render partial: 'votes/vote', object: @vote) %>"
+);
