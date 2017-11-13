@@ -27,7 +27,11 @@ class User < ApplicationRecord
     votable.joins(:votes).sum(:points)
   end
 
+  def points_from_votes
+    -votes.where('points < 0').count
+  end
+
   def total_points
-    points(questions) + points(answers) - votes.where('points < 0').count
+    points(questions) + points(answers) + points_from_votes
   end
 end
