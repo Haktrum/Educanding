@@ -22,4 +22,12 @@ class User < ApplicationRecord
     name = nombre + " " + apellido
     name
   end
+
+  def points votable
+    votable.joins(:votes).sum(:points)
+  end
+
+  def total_points
+    points(questions) + points(answers) - votes.where('points < 0').count
+  end
 end

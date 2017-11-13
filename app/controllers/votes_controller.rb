@@ -1,26 +1,23 @@
 class VotesController < ApplicationController
-  def new
-    @vote = Vote.new
-  end
 
   def create
     @vote = Vote.new(vote_new_params)
     @vote.save
-    redirect_to @vote.votable
+    render :update_points
   end
 
   def update
     @vote = Vote.find(params[:id])
     @vote.update(vote_update_params)
-    redirect_to @vote.votable
+    render :update_points
   end
 
   private
   def vote_new_params
-    params.require(:vote).permit(:user_id, :votable_id, :votable_type, :positive)
+    params.require(:vote).permit(:votable_id, :votable_type, :points).merge(user: current_user)
   end
 
   def vote_update_params
-    params.require(:vote).permit(:positive)
+    params.require(:vote).permit(:points)
   end
 end

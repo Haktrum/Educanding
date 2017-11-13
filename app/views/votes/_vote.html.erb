@@ -1,8 +1,7 @@
-<%= form_for vote, remote: false do |f| %>
-  <%= f.hidden_field :user_id %>
+<%= form_for vote, remote: true, html: {name: vote.votable_type_id + '_vote'} do |f| %>
   <%= f.hidden_field :votable_id %>
   <%= f.hidden_field :votable_type %>
-  <%= f.button '', :value => 'false', :name => 'vote[positive]', :class => "fa fa-thumbs-o-down fa- fa-2x fa-flip-horizontal fa-fw" %>
-  <%= vote.votable.points %> votos
-  <%= f.button '', :value => 'true', :name => 'vote[positive]', :class => "fa fa-thumbs-o-up fa-2x fa-fw" %>
+  <%= f.button '', :value => '-10', :name => 'vote[points]', :class => "fa fa-thumbs-o-down fa-2x fa-flip-horizontal fa-fw" %>
+  <%= vote.votable.points %> punto(s)
+  <%= f.button '', :value => '1', :name => 'vote[points]', :class => "fa fa-thumbs-o-up fa-2x fa-fw" %>
 <% end %>
