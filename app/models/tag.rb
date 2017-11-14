@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
   # Validations
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   # Associations
   has_many :question_tags, dependent: :destroy

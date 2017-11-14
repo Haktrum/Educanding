@@ -1,0 +1,10 @@
+<%= render layout: 'panel', locals: { title: title } do %>
+  <%= form_for item do |f| %>
+    <%= render partial: 'errors', collection: item.errors.full_messages, as: :message %>
+    <% inputs.each do |input| %>
+      <%= render partial: 'form_group', locals: { f: f }.merge(input) %>
+    <% end %>
+    <%= yield f %>
+    <%= f.submit submit, class: 'btn btn-success' %>
+  <% end %>
+<% end %>

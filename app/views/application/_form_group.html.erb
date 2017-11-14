@@ -1,0 +1,5 @@
+<div class="form-group">
+  <%= f.label label, class: 'control-label' %>
+    <% opts = [] if opts.nil? %>
+    <%= f.send(type, label, *opts[0..3],  {class: 'form-control'}.merge(opts[-1] || {})) %>
+</div>

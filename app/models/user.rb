@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def total_points
     points(questions) + points(answers) + points_from_votes
   end
+
+  def admin?
+    total_points > 5
+  end
 end
