@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114055708) do
+ActiveRecord::Schema.define(version: 20171115015341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20171114055708) do
     t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_question_tags_on_deleted_at"
     t.index ["question_id"], name: "index_question_tags_on_question_id"
     t.index ["tag_id"], name: "index_question_tags_on_tag_id"
   end
@@ -76,7 +78,9 @@ ActiveRecord::Schema.define(version: 20171114055708) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index "lower((name)::text)", name: "index_tags_on_lower_name_text", unique: true
+    t.index ["deleted_at"], name: "index_tags_on_deleted_at"
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
