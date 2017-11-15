@@ -8,9 +8,11 @@
       <div class="list-group" id="answers_container">
         <%= render @question.answers.decorate %>
       </div>
-      <div class="panel-body" id="answer_form">
-        <%= render 'answers/form'%>
-      </div>
+      <% if user_signed_in? %>
+        <div class="panel-body" id="answer_form">
+          <%= render 'answers/form'%>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

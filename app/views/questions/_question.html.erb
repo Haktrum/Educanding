@@ -22,8 +22,10 @@
     <ul class="col-md-12 list-group" id="question_comments_container">
       <%= render question.question_comments.decorate %>
     </ul>
-    <div class="col-md-12" id="question_comment_form">
-      <%= render 'question_comments/form'%>
-    </div>
+    <% if user_signed_in? %>
+      <div class="col-md-12" id="question_comment_form">
+        <%= render 'question_comments/form'%>
+      </div>
+    <% end %>
   </div>
 </div>

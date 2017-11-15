@@ -18,9 +18,11 @@
       <ul class="col-md-12 list-group" id="answer_comments_of_<%=answer.id%>">
         <%= render answer.answer_comments.decorate %>
       </ul>
-      <div class="col-md-12" id="answer_comment_form_<%=answer.id%>">
-        <%= render partial:'answer_comments/form', locals:{answer: answer} %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="col-md-12" id="answer_comment_form_<%=answer.id%>">
+          <%= render partial:'answer_comments/form', locals:{answer: answer} %>
+        </div>
+      <% end %>
     </div>
   </div>
 </li>
