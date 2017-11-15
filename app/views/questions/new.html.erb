@@ -1,10 +1,11 @@
-<div class='row'>
-  <div class='col-sm-6 col-sm-offset-3'>
-    <div class='panel panel-default'>
-      <div class='panel-body'>
-        <h2>Formule su pregunta</h2>
-        <%= render 'form'%>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render partial: 'form_generic', locals: {
+  title: 'Formule su pregunta',
+  item: @question,
+  inputs: [
+    { label: :title, type: :text_field },
+    { label: :body, type: :text_area },
+    { label: :faculty_id, type: :collection_select, opts: [Faculty.all, :id, :name, {}] },
+    { label: :tag_ids, type: :collection_select, opts: [Tag.all, :id, :name, {}, multiple: :multiple] }
+  ],
+  submit: 'Publicar'
+} %>
