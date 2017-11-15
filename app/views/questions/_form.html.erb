@@ -1,36 +1,11 @@
-<%= form_for @question do |f| %>
-  <% @question.errors.full_messages.each do |message| %>
-    <div class='alert alert-danger'><%= message %></div>
-  <% end %>
-  <% if flash[:alert] %>
-    <div class="alert alert-danger"> <%= flash[:alert] %> </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :title, class: 'control-label' %>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :body, class: 'control-label'%>
-    <%= f.text_area :body, class: 'form-control' %>
-  </div>
-  <div class="field margen-5">
-    <%= f.label :faculty_id, class:"label-control"  %><br />
-    <%= f.collection_select :faculty_id, Faculty.all, :id, :name, {}, class:"form-control"%>
-  </div>
-  <div class="field margen-5">
-    <%= f.label :tag_ids, class:"label-control"  %><br />
-    <script>
-      $(document).ready(function() {
-        $("#list-tags").select2({
-          placeholder: "Seleccionar etiquetas."
-        });
-      });
-    </script>
-    <%= f.collection_select :tag_ids, Tag.all, :id, :name, {},
-      class: "form-control",
-      multiple: "multiple",
-      id: "list-tags" %>
-  </div>
-  <%= f.submit 'Publicar', class: 'btn btn-success margen-5' %>
-<% end %>
+<%= render partial: 'form_generic', locals: {
+  title: 'Formule su pregunta',
+  item: @question,
+  inputs: [
+    {label: :title, type: :text_field},
+    {label: :body, type: :text_area},
+    {label: :faculty_id, type: :collection_select, opts: {Faculty.all, :id, :name}},
+    {label: :tag_ids, type: :collection_select, opts: {Tag.all, :id, :name, {}, multiple: :multiple},
+  ],
+  submit: 'Publicar'
+} %>

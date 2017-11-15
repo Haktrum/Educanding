@@ -1,0 +1,9 @@
+<%= render layout: 'panel', locals: {
+  title: "Tag #{@tag.name}"
+} do |f| %>
+  <h3>
+    <%= @tag.questions_count %> pregunta(s) con esta tag.
+  </h3>
+  <%= button_to 'Eliminar', tag_url, method: :delete, class: 'btn btn-danger pull-right',
+   data: {confirm: 'Seguro?', method: :delete} %>
+<% end %>
