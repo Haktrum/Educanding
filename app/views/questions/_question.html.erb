@@ -15,7 +15,7 @@
     <%= render partial: 'votes/vote', object: question.vote(current_user) %>
   </div>
   <div class="col-md-12">
-    <%= render question.tags %>
+    <%= render question.tags.with_deleted %>
   </div>
   <div class="collapse col-md-offset-1 col-md-11" id="ver_question_comments">
     <h5><b>Comentarios</b></h5>

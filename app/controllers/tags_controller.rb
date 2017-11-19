@@ -1,18 +1,16 @@
 class TagsController < ApplicationController
   def index
+    redirect_to root_path unless current_user.admin?
     @tags = Tag.all
   end
 
   def new
-    if current_user.admin?
-      @tag = Tag.new
-    else
-      redirect_to :index
-    end
+    redirect_to root_path unless current_user.admin?
+    @tag = Tag.new
   end
 
   def create
-    redirect_to :index unless current_user.admin?
+    redirect_to root_path unless current_user.admin?
     tag = Tag.deleted.find_by 'lower(name) = lower(?)', params[:tag][:name]
     if tag&.restore recursive: true
       redirect_to tags_url
@@ -28,11 +26,12 @@ class TagsController < ApplicationController
   end
 
   def show
+    redirect_to root_path unless current_user.admin?
     @tag = Tag.find_by id: params[:id]
   end
 
   def destroy
-    redirect_to :index unless current_user.admin?
+    redirect_to root_path unless current_user.admin?
     Tag.find_by(id: params[:id]).destroy
     redirect_to tags_url
   end
