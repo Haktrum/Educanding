@@ -1,1 +1,7 @@
-<div class='alert alert-danger'><%= message %></div>
+<ul class = "list-group">
+  <% errors.each do |error| %>
+    <li class = "list-group-item list-group-item-danger">
+      <%= error %>
+    </li>
+  <% end unless errors.nil? %>
+</ul>

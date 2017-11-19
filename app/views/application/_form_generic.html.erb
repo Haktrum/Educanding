@@ -1,6 +1,6 @@
 <%= render layout: 'panel', locals: { title: title } do %>
   <%= form_for item do |f| %>
-    <%= render partial: 'errors', collection: item.errors.full_messages, as: :message %>
+    <%= render partial: 'errors', locals: { errors: item.errors.full_messages } %>
     <% inputs.each do |input| %>
       <%= render partial: 'form_group', locals: { f: f }.merge(input) %>
     <% end %>
