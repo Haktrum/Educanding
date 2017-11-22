@@ -1,5 +1,6 @@
 <div class='panel-body'>
   <h4><%=link_to question.user.username, user_path(question.user) %>: <b><%= question.title %></b></h4>
+  <h6><%=question.faculty.name%></h6>
   <hr>
   <div class="container">
     <%= question.body %>
