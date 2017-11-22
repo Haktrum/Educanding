@@ -10,4 +10,8 @@ class Question < Votable
   has_many :question_tags, dependent: :destroy
   has_many :tags, through: :question_tags
   has_many :question_comments, dependent: :destroy
+
+  #Scope
+  scope :search, ->(query) { where('title LIKE :q OR body LIKE :q', q: "%#{query}%")}
+  scope :whit_faculty, ->(faculty_id) { where('faculty_id = ?', faculty_id)}
 end

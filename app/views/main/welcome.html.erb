@@ -1,8 +1,37 @@
-<h1>¡HOLA WORLD!</h1>
-<i class="fa fa-heart fa-fw"></i>
-<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+<%= form_for @presenter.filter, url: root_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.text_field :search, class: 'form-control' %>
+    </div>
+    <div class="col-md-3">
+      <%= f.collection_select :faculty, Faculty.all, :id, :name, {include_blank: 'Elegir Facultad'}, class: 'form-control' %>
+    </div>
+    <div class="col-md-2">
+      <a data-toggle="collapse" href="#elegir_etiquetas" aria-expanded="false" aria-controls="elegir_etiquetas">
+        <button type="button" class="btn btn-default btn-block">Elegir Etiquetas</button>
+      </a>
+    </div>
+    <div class="col-md-1">
+      <%= f.submit 'Buscar', class: 'btn btn-success btn-block' %>
+    </div>
+    <div class="col-md-12 collapse margen-5" id="elegir_etiquetas">
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $("#etiquetas").select2()
+        })
+      </script>
+      <%= f.collection_select :tags, Tag.all, :id, :name, {}, {multiple: "multiple", id: "etiquetas", class: "form-control"} %>
+    </div>
+  </div>
+<% end %>
+<hr>
 <div class="row">
-  <div class="well col-md-6">
-    Hola
+  <div class="col-md-offset-1 col-md-8">
+    <% @presenter.questions.each do |q| %>
+      <div class="panel-body">
+        <h4><b><%= q.title %></b></h4>
+        <p><%= q.body %></p>
+      </div>
+    <% end %>
   </div>
 </div>

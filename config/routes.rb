@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :votes, only: [:create, :update]
 
   get 'main/welcome'
-  root "questions#index"
+  root "main#welcome"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
