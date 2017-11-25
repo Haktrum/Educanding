@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'skills/index'
+
   devise_for :users
   resources :users, only: [:show] do
     get :my_perfil, on: :collection
