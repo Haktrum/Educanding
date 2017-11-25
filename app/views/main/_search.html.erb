@@ -1,0 +1,24 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#etiquetas").select2({
+      placeholder: "Filtrar por etiquetas."
+      })
+  })
+</script>
+
+<%= form_for @presenter.filter, url: root_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.text_field :search, class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+      <%= f.collection_select :faculty, Faculty.all, :id, :name, {include_blank: 'Filtrar por Facultad'}, class: 'form-control' %>
+    </div>
+    <div class="col-md-10 margen-5">
+      <%= f.collection_select :tags, Tag.all.with_deleted, :id, :name, {}, {multiple: "multiple", id: "etiquetas", class: "form-control"} %>
+    </div>
+    <div class="col-md-2 margen-5">
+      <%= f.submit 'Buscar', class: 'btn btn-info btn-block' %>
+    </div>
+  </div>
+<% end %>

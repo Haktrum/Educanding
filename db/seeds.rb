@@ -57,3 +57,15 @@ if true
   Tag.create(name: "Zoología")
   Tag.create(name: "Geología")
 end
+
+puts "Creando Habilidades"
+if true
+  Skill.create(nombre: "Preguntar")
+  Skill.create(nombre: "Responder")
+  Skill.create(nombre: "Comentar")
+  Skill.create(nombre: "Crear etiqueta")
+  Skill.create(nombre: "Borrar etiqueta")
+  Skill.create(nombre: "Votar")
+  Skill.create(nombre: "Crear facultad")
+  Skill.create(nombre: "Borrar facultad")
+end

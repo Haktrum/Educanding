@@ -38,4 +38,8 @@ class User < ApplicationRecord
   def admin?
     total_points > 5
   end
+
+  def skill? nombre
+    total_points > Skill.find_by(nombre: nombre).puntaje
+  end
 end

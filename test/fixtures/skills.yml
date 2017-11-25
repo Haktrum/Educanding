@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  puntaje: 1
+  activo: false
+
+two:
+  nombre: MyString
+  puntaje: 1
+  activo: false

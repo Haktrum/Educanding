@@ -20,8 +20,11 @@ class QuestionsFilter
   private
 
   def filter_params(questions)
-    questions = questions.whit_faculty(@faculty) if @faculty.present?
+    questions = questions.with_faculty(@faculty) if @faculty.present?
     questions = questions.search(@search) if @search.present?
+    @tags.each do |tag|
+      questions = questions.with_tag(tag) if tag.present?
+    end if @tags.present?
     questions
   end
 
