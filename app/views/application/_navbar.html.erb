@@ -11,60 +11,81 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
-          <% if current_user.admin? %>
-            <li class="dropdown">
-              <%= link_to tags_path do %>
-                Tags
+        <% if user_signed_in? %> <!-- Hay user_current -->
+          <li class="dropdown"> <!-- Ultimas preguntas -->
+            <%= link_to questions_path do %>
+            <i class="fa fa-question-circle fa-fw"></i> Ultimas preguntas
+            <% end %>
+          </li>
+          <li class="dropdown"> <!-- Habilidades -->
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-star fa-fw"></i>
+              <span class="hidden-xs"> Habilidades <i class="fa fa-caret-down"></i></span>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <% if current_user.skill?("Preguntar") %>
+                <li>
+                  <%= link_to new_question_path do %>
+                  <i class="fa fa-question fa-fw"></i> Preguntar
+                  <% end %>
+                </li>
               <% end %>
-            </li>
-          <% end %>
-        <li class="dropdown">
-          <%= link_to questions_path do %>
-          <i class="fa fa-question-circle fa-fw"></i> Ultimas preguntas
-          <% end %>
-        </li>
-        <li class="dropdown">
-          <%= link_to new_question_path do %>
-          <i class="fa fa-question fa-fw"></i> Preguntar
-          <% end %>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i>
-            <span class="hidden-xs"><%= current_user.nombre %> <i class="fa fa-caret-down"></i></span>
-          </a>
-          <ul class="dropdown-menu dropdown-user">
-            <li>
-              <%= link_to my_perfil_users_path do %>
-              <i class="fa fa-user-circle-o fa-fw"></i> Mi Perfíl
+              <% if current_user.skill?("Editar etiquetas") %>
+                <li>
+                  <%= link_to tags_path do %>
+                  <i class="fa fa-tag fa-fw"></i> Etiquetas
+                  <% end %>
+                </li>
               <% end %>
-            </li>
-            <li>
-              <%= link_to edit_user_registration_path do %>
-              <i class="fa fa-gears fa-fw"></i> Configuración
+              <% if current_user.skill?("Editar permisos") %>
+                <li>
+                  <%= link_to skills_path do %>
+                  <i class="fa fa-sign-out fa-fw"></i> Permisos
+                  <% end %>
+                </li>
               <% end %>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-sign-out fa-fw"></i> Salir
-              <% end %>
-            </li>
-          </ul>
-        </li>
-        <% else %>
-        <li>
-          <%= link_to new_user_session_path do %>
-          <i class="fa fa-sign-in fa-fw"></i> Loguearse
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to new_user_registration_path do %>
-          <i class="fa fa-user-plus fa-fw"></i> Registrarse
-          <% end %>
-        </li>
+            </ul>
+          </li>
+          <li class="dropdown">  <!-- User Opciones-->
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-user fa-fw"></i>
+              <span class="hidden-xs"><%= current_user.nombre %> <i class="fa fa-caret-down"></i></span>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+                <%= link_to my_perfil_users_path do %>
+                <i class="fa fa-user-circle-o fa-fw"></i> Mi Perfíl
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-gears fa-fw"></i> Configuración
+                <% end %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out fa-fw"></i> Salir
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        <% else %> <!-- No hay user_current -->
+          <li>
+            <%= link_to questions_path do %>
+            <i class="fa fa-question-circle fa-fw"></i> Ultimas preguntas
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path do %>
+            <i class="fa fa-sign-in fa-fw"></i> Loguearse
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do %>
+            <i class="fa fa-user-plus fa-fw"></i> Registrarse
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div><!--/.nav-collapse -->

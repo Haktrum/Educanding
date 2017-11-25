@@ -40,6 +40,7 @@ class User < ApplicationRecord
   end
 
   def skill? nombre
-    total_points > Skill.find_by(nombre: nombre).puntaje
+    permiso = Skill.find_by(nombre: nombre)
+    permiso.activo && total_points >= permiso.puntaje
   end
 end

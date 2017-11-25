@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20171125001446) do
 
   create_table "skills", force: :cascade do |t|
     t.string "nombre"
-    t.integer "puntaje", default: 0
+    t.integer "puntaje", default: -1
     t.boolean "activo", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
