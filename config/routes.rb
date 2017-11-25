@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :answers, only: [:show, :destroy, :create, :update]
   resources :answer_comments, only: [:index, :destroy, :create, :update]
   resources :question_comments, only: [:index, :destroy, :create, :update]
-  resources :tags, only: [:new, :index, :show, :destroy, :create]
+  resources :tags, only: [:index, :show, :destroy, :create, :edit]
   resources :votes, only: [:create, :update]
   resources :skills
 

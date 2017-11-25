@@ -72,6 +72,11 @@
           </li>
         <% else %> <!-- No hay user_current -->
           <li>
+            <%= link_to tags_path do %>
+            <i class="fa fa-tag fa-fw"></i> Etiquetas
+            <% end %>
+          </li>
+          <li>
             <%= link_to questions_path do %>
             <i class="fa fa-question-circle fa-fw"></i> Ultimas preguntas
             <% end %>

@@ -1,10 +1,7 @@
 class QuestionsController < ApplicationController
   def new
-    if current_user
-      @question = Question.new
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in? && current_user.skill?("Preguntar")
+    @question = Question.new
   end
 
   def create

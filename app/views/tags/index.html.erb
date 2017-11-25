@@ -1,6 +1,22 @@
 <div class="row">
-  <%= render partial: 'tag', collection: @tags %>
-</div>
-<div class="row">
-  <%= link_to 'Agregar', new_tag_url, class: 'btn btn-info pull-right' %>
+  <% if user_signed_in? && current_user.skill?("Editar etiquetas") %>
+    <div class="col-md-offset-3 col-md-6 well">
+      <%= form_for @new_tag do |f|%>
+        <%= render partial: 'errors', locals: { errors: @new_tag.errors.full_messages } %>
+        <div class="col-md-8">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="col-md-4">
+          <%= f.submit "Agregar", class:"btn btn-info btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="list-group" id="container-tags">
+    <% @tags.each do |tag| %>
+      <div class="list-group-item col-md-offset-3 col-md-6" id="<%= dom_id tag %>">
+        <%= render tag %>
+      </div>
+    <% end %>
+  </div>
 </div>

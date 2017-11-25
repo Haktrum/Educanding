@@ -1,0 +1,15 @@
+<div class="col-md-12">
+  <%= form_for @tag, remote: true do |f| %>
+    <div class="col-md-3 margen-5">
+      <%= f.label :name, "Cambiar Nombre:", class: 'control-label' %>
+    </div>
+    <div class="col-md-8">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="col-md-1 text-center">
+      <%= f.button(type: "submit", remote: true,class: "btn btn-info") do %>
+        <i class="fa fa-floppy-o fa-fw"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
