@@ -32,6 +32,10 @@ class QuestionsController < ApplicationController
     question.save!
     render '_best_answer.js.erb', locals: { question: question }
   end
+  
+  def without_answer
+    @questions = Question.without_answers
+  end
 
   private
 

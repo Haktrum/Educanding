@@ -11,7 +11,7 @@ class TagsController < ApplicationController
       redirect_to tags_path
       return
     else
-      @new_tag = Tag.new params_create
+      @new_tag = Tag.new params_tag
       if @new_tag.save
         redirect_to tags_path
         return
@@ -22,17 +22,26 @@ class TagsController < ApplicationController
   end
 
   def show
+    @tag = Tag.with_deleted.find(params[:id])
+    @question_tags = @tag.question_tags.with_deleted.order("created_at DESC")
+  end
+
+  def update
     @tag = Tag.find(params[:id])
-    @questions = @tag.questions.order("created_at DESC")
+    redirect_to tag_path(@tag) unless user_signed_in? && current_user.skill?("Editar etiquetas")
+    unless @tag.update(params_tag)
+      @errors= @tag.errors.full_messages
+      @tag = Tag.find(params[:id])
+    end
   end
 
   def destroy
     redirect_to tags_path unless user_signed_in? && current_user.skill?("Editar etiquetas")
-    Tag.find_by(id: params[:id]).destroy
+    Tag.find(params[:id]).destroy
     redirect_to tags_path
   end
 
-  def params_create
+  def params_tag
     params.require(:tag).permit(:name)
   end
 end

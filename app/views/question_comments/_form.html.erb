@@ -3,5 +3,10 @@
   <div class="form-group">
     <%= f.text_area :body, class: 'form-control' %>
   </div>
-  <%= f.submit 'Comentar', class: 'btn btn-success' %>
+  <div class="col-md-2">
+    <%= f.submit 'Comentar', class: 'btn btn-success' %>
+  </div>
+  <div class="col-md-10">
+    <%= render partial: 'errors', locals: { errors: @question_comment.errors.full_messages } %>
+  </div>
 <% end %>

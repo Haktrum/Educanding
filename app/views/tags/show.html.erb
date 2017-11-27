@@ -1,19 +1,27 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-8 well">
-    <div class="container-fluid">
-      <div class="col-md-6">
-        <h2> <%= @tag.name %></h2>
-      </div>
-      <div class="col-md-6 text-right">
-        <h3><%= @tag.questions_count %> pregunta(s) con esta tag.</h3>
-      </div>
-      <% if user_signed_in? && current_user.skill?("Editar etiquetas") %>
-          <hr>
-          <%= render partial:"tags/form_edit" %>
-      <% end %>
+    <div class="container-fluid", id="container_form_tag">
+      <%= render partial:"tags/form_edit" %>
     </div>
   </div>
 </div>
 
+<% @question_tags.each do |qt| %>
+    <div class="container-fluid">
+      <div class="row">
+            <h4><p class="bg-success"><%= qt.question.user.nombre %> preguntó:</p></h4>
+      </div>
+      <div class="row">
+        <div class="col-md-10"><h3><%= qt.question.title %></h3></div>
 
-<%= render partial:"questions/question_index", locals: {questions: @questions} %>
+          <div class="col-md-2"><p class="text-right"><%= link_to 'Ver', question_path(qt.question), class: 'btn btn-info' %></p></div>
+
+      </div>
+      <div class="row">
+
+          <div class="col-md-12"> <p class="text-right"> <%= qt.question.answers.size %> respuestas </p> </div>
+      </div>
+      <div class="row">
+      </div>
+    </div>
+<% end %>

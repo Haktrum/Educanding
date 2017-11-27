@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Creando Facultades"
 if true
+  Faculty.create(name: "Facultad de Informática")
   Faculty.create(name: "Facultad de Arquitectura y Urbanismo")
   Faculty.create(name: "Facultad de Bellas Artes")
   Faculty.create(name: "Facultad de Cs. Agrarias y Forestales")
@@ -18,7 +19,6 @@ if true
   Faculty.create(name: "Facultad de Cs. Naturales y Museo")
   Faculty.create(name: "Facultad de Cs. Veterinarias")
   Faculty.create(name: "Facultad de Humanidades y Cs. de la Educación")
-  Faculty.create(name: "Facultad de Informática")
   Faculty.create(name: "Facultad de Ingeniería")
   Faculty.create(name: "Facultad de Odontología")
   Faculty.create(name: "Facultad de Periodismo y Com. Social")
@@ -64,7 +64,16 @@ if true
   Skill.create(nombre: "Responder")
   Skill.create(nombre: "Comentar")
   Skill.create(nombre: "Votar")
-  Skill.create(nombre: "Editar etiqueta")
-  Skill.create(nombre: "Editar facultad")
+  Skill.create(nombre: "Editar etiquetas")
+  Skill.create(nombre: "Editar facultades")
   Skill.create(nombre: "Editar permisos")
 end
+
+puts "Creando Admin"
+  User.create(
+    nombre: "Emir",
+    apellido: "Fernandes",
+    email: "emir.fernandes6@gmail.com",
+    password: "123456789",
+    password_confirmation: "123456789",
+    faculty_id: 1)
