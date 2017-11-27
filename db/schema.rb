@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127145410) do
+ActiveRecord::Schema.define(version: 20171127212927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20171127145410) do
     t.bigint "faculty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "answers_count", default: 0
     t.index ["faculty_id"], name: "index_questions_on_faculty_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end

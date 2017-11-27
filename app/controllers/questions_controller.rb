@@ -24,6 +24,10 @@ class QuestionsController < ApplicationController
     @questions = Question.all.order("created_at DESC")
   end
 
+  def without_answer
+    @questions = Question.without_answers
+  end
+
   private
 
   def question_params

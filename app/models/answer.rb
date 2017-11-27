@@ -3,6 +3,6 @@ class Answer < Votable
   validates :body, presence: true
 
   #Associations
-  belongs_to :question
+  belongs_to :question, counter_cache: true
   has_many :answer_comments, dependent: :destroy
 end

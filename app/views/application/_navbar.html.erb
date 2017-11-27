@@ -30,6 +30,13 @@
                   <% end %>
                 </li>
               <% end %>
+              <% if current_user.skill?("Responder") %>
+                <li>
+                  <%= link_to without_answer_questions_path do %>
+                  <i class="fa fa-pencil-square-o fa-fw"></i> Responder
+                  <% end %>
+                </li>
+              <% end %>
               <li>
                 <%= link_to tags_path do %>
                 <i class="fa fa-tag fa-fw"></i> Etiquetas
