@@ -22,8 +22,8 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag = Tag.find(params[:id])
-    @questions = @tag.questions.order("created_at DESC")
+    @tag = Tag.with_deleted.find(params[:id])
+    @question_tags = @tag.question_tags.with_deleted.order("created_at DESC")
   end
 
   def update
@@ -37,7 +37,7 @@ class TagsController < ApplicationController
 
   def destroy
     redirect_to tags_path unless user_signed_in? && current_user.skill?("Editar etiquetas")
-    Tag.find_by(id: params[:id]).destroy
+    Tag.find(params[:id]).destroy
     redirect_to tags_path
   end
 
