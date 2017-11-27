@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     get :my_perfil, on: :collection
     get :questions, on: :collection
   end
-  resources :questions
+  resources :questions do
+    get :without_answer, on: :collection
+  end
   resources :answers, only: [:show, :destroy, :create, :update]
   resources :answer_comments, only: [:index, :destroy, :create, :update]
   resources :question_comments, only: [:index, :destroy, :create, :update]

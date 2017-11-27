@@ -15,4 +15,7 @@ class Question < Votable
   scope :search, ->(query) { where('title LIKE :q OR body LIKE :q', q: "%#{query}%")}
   scope :with_faculty, ->(faculty_id) { where('faculty_id = ?', faculty_id)}
   scope :with_tag, ->(tag) { joins(:question_tags).where('question_tags.tag_id = ?', tag) }
+  scope :with_answers, -> { where('answers_count > ?', 0)}
+  scope :without_answers, -> { where('answers_count = ?', 0)}
+
 end
