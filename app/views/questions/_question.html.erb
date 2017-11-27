@@ -15,6 +15,7 @@
   <div class="col-md-6 text-right">
     <a data-toggle="collapse" href="#ver_question_comments" aria-expanded="false" aria-controls="ver_question_comments">
       <i class="fa fa-comments fa-2x fa-fw"></i>
+      <%= question.question_comments.count %> comentario(s) 
     </a>
     <%= render partial: 'votes/vote', object: question.vote(current_user) %>
   </div>
@@ -22,11 +23,15 @@
     <%= render partial:"tags/tag_button", collection: question.tags.with_deleted, as: :tag %>
   </div>
   <div class="collapse col-md-offset-1 col-md-11" id="ver_question_comments">
-    <h5><b>Comentarios</b></h5>
+    <% if question.question_comments.count > 0 || (user_signed_in? && current_user.skill?("Comentar"))%>
+      <h5><b>Comentarios</b></h5>
+    <% else %>
+      <h5><b>No hay comentarios</b></h5>
+    <% end %>
     <ul class="col-md-12 list-group" id="question_comments_container">
       <%= render question.question_comments.decorate %>
     </ul>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && current_user.skill?("Comentar") %>
       <div class="col-md-12" id="question_comment_form">
         <%= render 'question_comments/form'%>
       </div>
