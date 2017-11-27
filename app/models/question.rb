@@ -10,6 +10,7 @@ class Question < Votable
   has_many :question_tags, dependent: :destroy
   has_many :tags, through: :question_tags
   has_many :question_comments, dependent: :destroy
+  belongs_to :best_answer, class_name: 'Answer'
 
   #Scope
   scope :search, ->(query) { where('title LIKE :q OR body LIKE :q', q: "%#{query}%")}
