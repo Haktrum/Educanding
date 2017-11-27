@@ -1,0 +1,10 @@
+<div class="col-md-8">
+  <%= link_to faculty.name, faculty_path(faculty) %>
+</div>
+<% if user_signed_in? && current_user.skill?("Editar facultades")%>
+  <div class="col-md-4 text-right">
+    <%= link_to faculty_path(faculty), method: :delete, class: 'btn btn-danger' do %>
+    <i class="fa fa-trash fa-fw"></i>
+    <% end %>
+  </div>
+<% end %>

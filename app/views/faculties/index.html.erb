@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-offset-3 col-md-6 well">
       <div class="text-center">
-        <h2 style="margin-top: 0px">Etiquetas</h2>
+        <h2 style="margin-top: 0px">Facultades</h2>
       </div>
-      <% if user_signed_in? && current_user.skill?("Editar etiquetas") %>
-        <%= form_for @new_tag do |f|%>
-          <%= render partial: 'errors', locals: { errors: @new_tag.errors.full_messages } %>
+      <% if user_signed_in? && current_user.skill?("Editar facultades") %>
+        <%= form_for @new_faculty do |f|%>
+          <%= render partial: 'errors', locals: { errors: @new_faculty.errors.full_messages } %>
           <div class="col-md-8">
             <%= f.text_field :name, class: "form-control" %>
           </div>
@@ -16,9 +16,9 @@
       <% end %>
     </div>
   <div class="list-group" id="container-tags">
-    <% @tags.each do |tag| %>
-      <div class="list-group-item col-md-offset-3 col-md-6" id="<%= dom_id tag %>">
-        <%= render tag %>
+    <% @faculties.each do |faculty| %>
+      <div class="list-group-item col-md-offset-3 col-md-6" id="<%= dom_id faculty %>">
+        <%= render faculty %>
       </div>
     <% end %>
   </div>

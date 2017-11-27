@@ -30,17 +30,20 @@
                   <% end %>
                 </li>
               <% end %>
-              <% if current_user.skill?("Editar etiquetas") %>
-                <li>
-                  <%= link_to tags_path do %>
-                  <i class="fa fa-tag fa-fw"></i> Etiquetas
-                  <% end %>
-                </li>
-              <% end %>
+              <li>
+                <%= link_to tags_path do %>
+                <i class="fa fa-tag fa-fw"></i> Etiquetas
+                <% end %>
+              </li>
+              <li>
+                <%= link_to faculties_path do %>
+                <i class="fa fa-graduation-cap fa-fw"></i> Facultades
+                <% end %>
+              </li>
               <% if current_user.skill?("Editar permisos") %>
                 <li>
                   <%= link_to skills_path do %>
-                  <i class="fa fa-sign-out fa-fw"></i> Permisos
+                  <i class="fa fa-pencil fa-fw"></i> Editar permisos
                   <% end %>
                 </li>
               <% end %>
@@ -71,6 +74,11 @@
             </ul>
           </li>
         <% else %> <!-- No hay user_current -->
+          <li>
+            <%= link_to faculties_path do %>
+            <i class="fa fa-graduation-cap fa-fw"></i> Facultades
+            <% end %>
+          </li>
           <li>
             <%= link_to tags_path do %>
             <i class="fa fa-tag fa-fw"></i> Etiquetas

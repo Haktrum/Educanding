@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show, :destroy, :create, :update]
   resources :votes, only: [:create, :update]
   resources :skills
+  resources :faculties, only: [:index, :show, :destroy, :create, :update]
 
   get 'main/welcome'
   root "main#welcome"

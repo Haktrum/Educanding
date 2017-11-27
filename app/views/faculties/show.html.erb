@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 well">
+    <div class="container-fluid", id="container_form_faculty">
+      <%= render partial:"faculties/form_edit" %>
+    </div>
+  </div>
+</div>
+
+<%= render partial:"questions/question_index", locals: {questions: @questions} %>
