@@ -23,6 +23,11 @@
               <span class="hidden-xs"> Habilidades <i class="fa fa-caret-down"></i></span>
             </a>
             <ul class="dropdown-menu dropdown-user">
+              <li>
+                <%= link_to questions_users_path  do %>
+                <i class="fa fa-question fa-fw"></i> Mis Preguntas
+                <% end %>
+              </li>
               <% if current_user.skill?("Preguntar") %>
                 <li>
                   <%= link_to new_question_path do %>

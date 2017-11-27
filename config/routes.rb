@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show] do
     get :my_perfil, on: :collection
+    get :questions, on: :collection
   end
   resources :questions
   resources :answers, only: [:show, :destroy, :create, :update]
