@@ -8,6 +8,7 @@ class Votable < ApplicationRecord
   end
 
   def points
-    votes.sum(:points)
+    sum = votes.group(:points).count(:points)
+    (sum[1] || 0) - (sum[-10] || 0)
   end
 end
