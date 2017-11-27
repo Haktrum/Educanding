@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20171127212927) do
     t.bigint "faculty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "best_answer_id"
     t.integer "answers_count", default: 0
     t.index ["faculty_id"], name: "index_questions_on_faculty_id"
     t.index ["user_id"], name: "index_questions_on_user_id"

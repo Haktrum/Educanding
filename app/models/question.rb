@@ -10,12 +10,13 @@ class Question < Votable
   has_many :question_tags, dependent: :destroy
   has_many :tags, through: :question_tags
   has_many :question_comments, dependent: :destroy
+  belongs_to :best_answer, class_name: 'Answer'
 
   #Scope
   scope :search, ->(query) { where('title LIKE :q OR body LIKE :q', q: "%#{query}%")}
   scope :with_faculty, ->(faculty_id) { where('faculty_id = ?', faculty_id)}
   scope :with_tag, ->(tag) { joins(:question_tags).where('question_tags.tag_id = ?', tag) }
-  scope :with_answers, -> { where('answers_count > ?', 0)}
-  scope :without_answers, -> { where('answers_count = ?', 0)}
+  scope :with_answers, -> { select('questions.*').joins(:answers).group('questions.id').having('count(answers) > 0')}
+  scope :without_answers, -> { select('questions.*').joins(:answers).group('questions.id').having('count(answers) = 0')}
 
 end
