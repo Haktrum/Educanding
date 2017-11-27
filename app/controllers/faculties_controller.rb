@@ -16,7 +16,7 @@ class FacultiesController < ApplicationController
       redirect_to faculties_path
       return
     else
-      @new_faculty = Tag.new params_faculty
+      @new_faculty = Faculty.new params_faculty
       if @new_faculty.save
         redirect_to faculties_path
         return
