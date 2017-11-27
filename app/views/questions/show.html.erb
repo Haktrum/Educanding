@@ -4,11 +4,15 @@
       <%= render @question.decorate %>
     </div>
     <div class="col-sm-11 col-sm-offset-1 panel panel-default">
-      <h4><b>Respuestas</b></h4>
+      <% if @question.answers.count > 0 || (user_signed_in? && current_user.skill?("Comentar"))%>
+        <h5><b>Respuestas</b></h5>
+      <% else %>
+        <h5><b>No hay respuestas</b></h5>
+      <% end %>
       <div class="list-group" id="answers_container">
         <%= render @question.answers.decorate %>
       </div>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user.skill?("Responder") %>
         <div class="panel-body" id="answer_form">
           <%= render 'answers/form'%>
         </div>
