@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get :my_perfil, on: :collection
   end
   resources :questions
+  patch 'questions/:id/best_answer/:best_answer_id' => 'questions#best_answer', as: 'best_answer'
   resources :answers, only: [:show, :destroy, :create, :update]
   resources :answer_comments, only: [:index, :destroy, :create, :update]
   resources :question_comments, only: [:index, :destroy, :create, :update]

@@ -24,6 +24,15 @@ class QuestionsController < ApplicationController
     @questions = Question.all.order("created_at DESC")
   end
 
+  def best_answer
+    question = Question.find(params[:id])
+    redirect_to question unless question.user == current_user
+    answer = Answer.find(params[:best_answer_id])
+    question.best_answer = answer
+    question.save!
+    render '_best_answer.js.erb', locals: { question: question }
+  end
+
   private
 
   def question_params
