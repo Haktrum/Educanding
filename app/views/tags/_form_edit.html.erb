@@ -1,15 +1,25 @@
-<div class="col-md-12">
-  <%= form_for @tag, remote: true do |f| %>
-    <div class="col-md-3 margen-5">
-      <%= f.label :name, "Cambiar Nombre:", class: 'control-label' %>
-    </div>
-    <div class="col-md-8">
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
-    <div class="col-md-1 text-center">
-      <%= f.button(type: "submit", remote: true,class: "btn btn-info") do %>
-        <i class="fa fa-floppy-o fa-fw"></i>
+<div class="col-md-5">
+  <h2> <%= @tag.name %></h2>
+</div>
+<div class="col-md-7 text-right">
+  <h3><%= @tag.questions_count %> pregunta(s) con esta etiqueta.</h3>
+</div>
+<% if user_signed_in? && current_user.skill?("Editar etiquetas") %>
+    <hr>
+    <div class="col-md-12">
+      <%= form_for @tag, remote: true do |f| %>
+      <%= render partial: 'errors', locals: { errors: @errors} %>
+      <div class="col-md-3 margen-5">
+        <%= f.label :name, "Cambiar Nombre:", class: 'control-label' %>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="col-md-1 text-center">
+        <%= f.button(type: "submit", class: "btn btn-info") do %>
+          <i class="fa fa-floppy-o fa-fw"></i>
+        <% end %>
+      </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+<% end %>
