@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     get :my_perfil, on: :collection
     get :questions, on: :collection
+    get :skills
+  end
+  resource :user, only: [:show] do
+    get :questions, on: :collection
+    get :skills
   end
   resources :questions do
     get :without_answer, on: :collection
