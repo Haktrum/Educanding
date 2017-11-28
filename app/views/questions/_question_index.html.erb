@@ -1,19 +1,11 @@
-<% questions.each do |q| %>
-    <div class="container-fluid">
-      <div class="row">
-            <h4><p class="bg-success"><%= q.user.nombre %> preguntó:</p></h4>
-      </div>
-      <div class="row">
-        <div class="col-md-10"><h3><%= q.title %></h3></div>
 
-          <div class="col-md-2"><p class="text-right"><%= link_to 'Ver', question_path(q), class: 'btn btn-info' %></p></div>
-
+  <% questions.each do |q| %>
+      <div class="panel panel-default panel-body">
+          <h4><%=link_to q.user.username, user_path(q.user) %> preguntó: <b><%= q.title %></b></h4>
+          <%= link_to faculty_path(q.faculty_id) do %>
+            <h6><%=Faculty.with_deleted.find(q.faculty_id).name%></h6>
+          <% end %>
+          <div><p><%= link_to 'Ver', question_path(q), class: 'btn btn-info' %></p></div>
+          <div>  <%= q.answers.size %> respuestas</div>
       </div>
-      <div class="row">
-
-          <div class="col-md-12"> <p class="text-right"> <%= q.answers.size %> respuestas </p> </div>
-      </div>
-      <div class="row">
-      </div>
-    </div>
-<% end %>
+    <% end %>
