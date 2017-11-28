@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     render 'votes', locals: { votes: votes }
   end
 
+  def answers
+    @answers = user.answers
+  end
+
   private
 
   def user

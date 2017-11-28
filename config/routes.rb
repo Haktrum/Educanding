@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get :questions, on: :collection
     get :skills
     get '/question_votes' => 'users#question_votes'
+    get '/answers' => 'users#answers'
   end
   resources :questions do
     get :without_answer, on: :collection
