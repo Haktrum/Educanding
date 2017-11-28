@@ -15,6 +15,11 @@ class UsersController < ApplicationController
     @user = user
   end
 
+  def question_votes
+    votes = user.question_votes
+    render 'votes', locals: { votes: votes }
+  end
+
   private
 
   def user
