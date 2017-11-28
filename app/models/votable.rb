@@ -4,7 +4,7 @@ class Votable < ApplicationRecord
   belongs_to :user
 
   def vote user
-    votes.find_by(user: user) || Vote.new(user: user, votable: self)
+    votes.find_by(user: user) || Vote.new(user: user, votable: self, points: 0)
   end
 
   def points

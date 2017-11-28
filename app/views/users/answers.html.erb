@@ -1,0 +1,14 @@
+<%= render layout: 'panel', locals: { title: 'Preguntas respondidas' } do %>
+<ul class='list-group'>
+  <% @answers.each do |answer| %>
+  <%= link_to answer.question, class: 'list-group-item' do %>
+  <h4 class="list-group-item-heading">
+    <%= answer.question.title %>
+  </h4>
+  <p class="list-group-item-text">
+    <%= answer.body %>
+  </p>
+  <% end %>
+  <% end %>
+</ul>
+<% end %>
