@@ -10,4 +10,19 @@ class UsersController < ApplicationController
   def show
 
   end
+
+  def skills
+    @user = user
+  end
+
+  private
+
+  def user
+    unless params[:user_id].nil? then
+      User.find(params[:user_id])
+    else
+      current_user
+    end
+  end
+
 end
