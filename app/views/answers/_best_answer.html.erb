@@ -3,7 +3,7 @@
   Mejor respuesta
   <% elsif answer.question.user == current_user %>
   <%= link_to "Marcar como mejor respuesta",
-  best_answer_path(id: answer.question.id, best_answer_id: answer.id), callback: :callback,
+  question_best_answer_path(answer.question, answer), callback: :callback,
   method: :patch, remote: true %>
   <% end %>
 </span>

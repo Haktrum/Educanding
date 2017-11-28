@@ -3,15 +3,21 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show] do
     get :my_perfil, on: :collection
+    get :questions, on: :collection
   end
-  resources :questions
-  patch 'questions/:id/best_answer/:best_answer_id' => 'questions#best_answer', as: 'best_answer'
+  resources :questions do
+    get :without_answer, on: :collection
+  end
+  resources :questions do
+    resources :best_answer, only: [:update], action: :best_answer, controller: 'answers'
+  end
   resources :answers, only: [:show, :destroy, :create, :update]
   resources :answer_comments, only: [:index, :destroy, :create, :update]
   resources :question_comments, only: [:index, :destroy, :create, :update]
-  resources :tags, only: [:index, :show, :destroy, :create, :edit]
+  resources :tags, only: [:index, :show, :destroy, :create, :update]
   resources :votes, only: [:create, :update]
   resources :skills
+  resources :faculties, only: [:index, :show, :destroy, :create, :update]
 
   get 'main/welcome'
   root "main#welcome"

@@ -14,6 +14,14 @@ class AnswersController < ApplicationController
     redirect_to answer.question
   end
 
+  def best_answer
+    question = Question.find(params[:question_id])
+    answer = Answer.find(params[:id])
+    question.best_answer = answer
+    question.save!
+    render '_update_best_answer.js.erb', locals: { question: question }
+  end
+
   private
 
   def answer_params
