@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   resources :questions do
     get :without_answer, on: :collection
   end
-  resources :questions
-  patch 'questions/:id/best_answer/:best_answer_id' => 'questions#best_answer', as: 'best_answer'
+  resources :questions do
+    resources :best_answer, only: [:update], action: :best_answer, controller: 'answers'
+  end
   resources :answers, only: [:show, :destroy, :create, :update]
   resources :answer_comments, only: [:index, :destroy, :create, :update]
   resources :question_comments, only: [:index, :destroy, :create, :update]

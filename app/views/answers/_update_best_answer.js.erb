@@ -1,0 +1,4 @@
+<% question.answers.each do |answer| %>
+$("#answer_<%= answer.id %> .mejor-respuesta")
+.replaceWith('<%= escape_javascript(render partial: 'best_answer', object: answer, as: :answer) %>');
+<% end %>
