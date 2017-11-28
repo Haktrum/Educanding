@@ -1,0 +1,16 @@
+<%= render layout: 'panel', locals: { title: 'Preguntas votadas' } do %>
+<ul class='list-group'>
+  <% votes.each do |vote| %>
+  <%= link_to vote.votable, class: 'list-group-item' do %>
+  <%= vote.votable.title %>
+  <span class='pull-right'>
+    <% if vote.points > 0 then %>
+    <i class='fa fa-thumbs-o-up fa-2x fa-fw text-success'></i>
+    <% else %>
+    <i class='fa fa-thumbs-o-down fa-2x fa-flip-horizontal fa-fw text-danger'></i>
+    <% end %>
+  </span>
+  <% end %>
+  <% end %>
+</ul>
+<% end %>

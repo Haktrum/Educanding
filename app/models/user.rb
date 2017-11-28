@@ -47,4 +47,8 @@ class User < ApplicationRecord
   def skills
     Skill.where 'puntaje <= ?', total_points
   end
+
+  def question_votes
+    votes.where(votable_type: 'Question').order(:votable_id)
+  end
 end
