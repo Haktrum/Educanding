@@ -1,5 +1,10 @@
 <div class="form-group">
   <%= f.label label, class: 'control-label' %>
-    <% opts = [] if opts.nil? %>
-    <%= f.send(type, label, *opts[0..3],  {class: 'form-control'}.merge(opts[4..-1]&.send(:[], 0) || {})) %>
+  <%
+  opts = [] if opts.nil?
+  opts.unshift label
+  last = f.method(type).parameters.count - 1
+  opts[last] = {class: 'form-control'}.merge(opts[last] || {})
+  %>
+  <%= f.send(type, *opts) %>
 </div>
