@@ -1,18 +1,17 @@
-<h2> <%= @tag.name %></h2>
-<h4><%= @tag.questions_count %> pregunta(s) con esta etiqueta.</h4>
-<% if @tag.deleted? %>
+<h2> <%= @faculty.name %></h2>
+<h4><%= @faculty.questions_count %> pregunta(s) con esta facultad.</h4>
+<% if @faculty.deleted? %>
   <ul class = "list-group">
       <li class = "list-group-item list-group-item-danger">
-        Esta etiqueta se encuentra eliminada.
+        Esta facultad se encuentra eliminada.
       </li>
   </ul>
 <% end %>
-<% if user_signed_in? && current_user.skill?("Editar etiquetas") && !@tag.deleted? %>
+<% if user_signed_in? && current_user.skill?("Editar facultades") && !@faculty.deleted? %>
     <hr>
     <div class="col-md-12">
-      <%= form_for @tag, remote: true do |f| %>
+      <%= form_for @faculty, remote: true do |f| %>
       <%= render partial: 'errors', locals: { errors: @errors} %>
-
       <div class="col-md-3 margen-5">
         <%= f.label :name, "Cambiar Nombre:", class: 'control-label' %>
       </div>

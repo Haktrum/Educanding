@@ -23,6 +23,11 @@
               <span class="hidden-xs"> Habilidades <i class="fa fa-caret-down"></i></span>
             </a>
             <ul class="dropdown-menu dropdown-user">
+              <li>
+                <%= link_to questions_users_path  do %>
+                <i class="fa fa-question fa-fw"></i> Mis Preguntas
+                <% end %>
+              </li>
               <% if current_user.skill?("Preguntar") %>
                 <li>
                   <%= link_to new_question_path do %>
@@ -30,17 +35,27 @@
                   <% end %>
                 </li>
               <% end %>
-              <% if current_user.skill?("Editar etiquetas") %>
+              <% if current_user.skill?("Responder") %>
                 <li>
-                  <%= link_to tags_path do %>
-                  <i class="fa fa-tag fa-fw"></i> Etiquetas
+                  <%= link_to without_answer_questions_path do %>
+                  <i class="fa fa-pencil-square-o fa-fw"></i> Responder
                   <% end %>
                 </li>
               <% end %>
+              <li>
+                <%= link_to tags_path do %>
+                <i class="fa fa-tag fa-fw"></i> Etiquetas
+                <% end %>
+              </li>
+              <li>
+                <%= link_to faculties_path do %>
+                <i class="fa fa-graduation-cap fa-fw"></i> Facultades
+                <% end %>
+              </li>
               <% if current_user.skill?("Editar permisos") %>
                 <li>
                   <%= link_to skills_path do %>
-                  <i class="fa fa-sign-out fa-fw"></i> Permisos
+                  <i class="fa fa-pencil fa-fw"></i> Editar permisos
                   <% end %>
                 </li>
               <% end %>
@@ -71,6 +86,11 @@
             </ul>
           </li>
         <% else %> <!-- No hay user_current -->
+          <li>
+            <%= link_to faculties_path do %>
+            <i class="fa fa-graduation-cap fa-fw"></i> Facultades
+            <% end %>
+          </li>
           <li>
             <%= link_to tags_path do %>
             <i class="fa fa-tag fa-fw"></i> Etiquetas

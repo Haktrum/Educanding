@@ -2,23 +2,23 @@
   <div class='col-sm-6 col-sm-offset-3'>
     <div class='panel panel-default'>
       <div class='panel-body'>
-        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <h2>Editar Cuenta</h2>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
 
           <div class="field margen-5">
-            <%= f.label :nombre, class:"label-control"  %><br />
+            <%= f.label :nombre, class:"label-control"  %>
             <%= f.text_field :nombre, autofocus: true, class:"form-control" %>
           </div>
 
           <div class="field margen-5">
-            <%= f.label :apellido, class:"label-control"  %><br />
+            <%= f.label :apellido, class:"label-control"  %>
             <%= f.text_field :apellido, autofocus: true, class:"form-control" %>
           </div>
 
           <div class="field margen-5">
-            <%= f.label :email, class:"label-control" %><br />
+            <%= f.label :email, class:"label-control" %>
             <%= f.email_field :email, autofocus: true, class:"form-control" %>
           </div>
 
@@ -27,11 +27,10 @@
           <% end %>
 
           <div class="field margen-5">
-            <%= f.label :password, class:"label-control" %> <i>(leave blank if you don't want to change it)</i><br />
+            <%= f.label :password, class:"label-control" %> <i>(Dejar en blanco para si no quiere cambiar su contraseña)</i>
             <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
             <% if @minimum_password_length %>
-              <br />
-              <em><%= @minimum_password_length %> characters minimum</em>
+              <em><%= @minimum_password_length %> caracteres minimos</em>
             <% end %>
           </div>
 
@@ -41,20 +40,20 @@
           </div>
 
           <div class="field">
-            <%= f.label :current_password, class:"label-control" %> <i>(we need your current password to confirm your changes)</i><br />
+            <%= f.label :current_password, class:"label-control" %> <i>(Ingrese su contraseña para confirmar los cambios)</i><br />
             <%= f.password_field :current_password, autocomplete: "off", class:"form-control" %>
           </div>
 
           <div class="actions margen-5">
-            <%= f.submit "Update", class:"btn btn-primary btn-lg btn-block" %>
+            <%= f.submit "Actualizar", class:"btn btn-info btn-lg btn-block" %>
           </div>
         <% end %>
 
-        <h3>Cancel my account</h3>
+        <h3>Cancelar mi Cuenta</h3>
 
-        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, class:"btn btn-danger btn-lg btn-block", method: :delete %></p>
+        <p>¿Descontento? <%= button_to "Cancelar", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, class:"btn btn-danger btn-lg btn-block", method: :delete %></p>
 
-        <%= link_to "Back", :back %>
+        <%#= link_to "Back", :back %>
       </div>
     </div>
   </div>

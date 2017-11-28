@@ -228,6 +228,16 @@ es:
         faculty_id: "Facultad"
         tags: "Etiquetas"
         tag_ids: "Etiquetas"
+      question_comment:
+        body: "Cuerpo"
+      answer:
+        body: "Cuerpo"
+      answer_comment:
+        body: "Cuerpo"
+      tag:
+        name: "Etiqueta"
+      faculty:
+        name: "Facultad"
       user:
         sign_up: "Registrarse"
         faculty_id: "Facultad"
@@ -239,6 +249,7 @@ es:
         blank: "vacío"
         too_short: "mínimas: 1"
         too_long: "máximas: 5"
+        taken: "ya exite"
       models:
         user:
           too_short: "corta"

@@ -10,6 +10,6 @@ class Tag < ApplicationRecord
   has_many :questions, through: :question_tags
 
   def questions_count
-    questions.count
+    question_tags.with_deleted.count
   end
 end
