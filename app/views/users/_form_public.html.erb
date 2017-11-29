@@ -1,0 +1,9 @@
+<% if user.public? %>
+  <%= link_to public_user_path, remote: true, class: 'btn btn-success' do %>
+    <i class="fa fa-check fa-fw"></i>
+    <% end %>
+  <% else %>
+    <%= link_to public_user_path, remote: true, class: 'btn btn-danger' do %>
+      <i class="fa fa-times fa-fw"></i>
+    <% end %>
+<% end %>

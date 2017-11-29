@@ -22,6 +22,15 @@ class UsersController < ApplicationController
     @answers = user.answers
   end
 
+  def public
+    redirect_to root_path unless user_signed_in?
+    if current_user.public?
+      current_user.update(public: false)
+    else
+      current_user.update(public: true)
+    end
+  end
+
   private
 
   def user

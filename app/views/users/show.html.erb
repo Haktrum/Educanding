@@ -2,28 +2,30 @@
 <h5 class="text-center">  <%= link_to faculty_path(@user.faculty_id) do %>
     <h6><%=Faculty.with_deleted.find(@user.faculty_id).name%></h6>
   <% end %>
-<h5 class="text-center"><%= @user.email %></h5>
-<div class="panel panel-default">
-  <table class="table">
-    <tr class="text-center">
-      <th>Tipo</th>
-      <th class="text-right">Puntos</th>
-    </tr>
-    <tr>
-      <td>Preguntas</td>
-      <td class="text-right"><%= @user.points @user.questions %></td>
-    </tr>
-    <tr>
-      <td>Respuestas</td>
-      <td class="text-right"><%= @user.points @user.answers %></td>
-    </tr>
-    <tr>
-      <td>Por emitidos</td>
-      <td class="text-right"><%= @user.points_from_votes %></td>
-    </tr>
-    <tr class="success">
-      <td>Netos</td>
-      <td class="text-right"><%= @user.total_points %></td>
-    </tr>
-  </table>
-</div>
+<% if @user == current_user || @user.public?  %>
+  <h5 class="text-center"><%= @user.email %></h5>
+  <div class="panel panel-default">
+    <table class="table">
+      <tr class="text-center">
+        <th>Tipo</th>
+        <th class="text-right">Puntos</th>
+      </tr>
+      <tr>
+        <td>Preguntas</td>
+        <td class="text-right"><%= @user.points @user.questions %></td>
+      </tr>
+      <tr>
+        <td>Respuestas</td>
+        <td class="text-right"><%= @user.points @user.answers %></td>
+      </tr>
+      <tr>
+        <td>Por emitidos</td>
+        <td class="text-right"><%= @user.points_from_votes %></td>
+      </tr>
+      <tr class="success">
+        <td>Netos</td>
+        <td class="text-right"><%= @user.total_points %></td>
+      </tr>
+    </table>
+  </div>
+<% end %>

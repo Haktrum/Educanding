@@ -1,10 +1,10 @@
 
   <% questions.each do |q| %>
       <div class="panel panel-default panel-body">
-          <h4><%=link_to q.user.username, user_path(q.user) %> preguntó: <b><%= q.title %></b></h4>
+          <h4><%=if user_signed_in? then link_to q.user.username, user_path(q.user) else q.user.username end %> preguntó: <b><%= q.title %></b></h4>
           <%= link_to faculty_path(q.faculty_id) do %>
             <h6><%=Faculty.with_deleted.find(q.faculty_id).name%></h6>
-          <% end %>
+          <% end%>
           <div><p><%= link_to 'Ver', question_path(q), class: 'btn btn-info' %></p></div>
           <div>  <%= q.answers.size %> respuestas</div>
       </div>

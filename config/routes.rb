@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resource :user, only: [:show] do
     get :questions, on: :collection
     get :skills
+    get '/public' => 'users#public'
     get '/question_votes' => 'users#question_votes'
     get '/answers' => 'users#answers'
   end
