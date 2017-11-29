@@ -1,6 +1,8 @@
 require 'paranoia'
 class Tag < ApplicationRecord
   acts_as_paranoid
+  validates_as_paranoid
+  validates_uniqueness_of_without_deleted :name
 
   # Validations
   validates :name, presence: true, uniqueness: { case_sensitive: false }
