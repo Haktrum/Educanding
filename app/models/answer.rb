@@ -5,4 +5,8 @@ class Answer < Votable
   #Associations
   belongs_to :question
   has_many :answer_comments, dependent: :destroy
+
+  def is_best_answer?
+    question.best_answer == self
+  end
 end

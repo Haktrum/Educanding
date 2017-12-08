@@ -40,8 +40,14 @@ class User < ApplicationRecord
     points answers, 10, -2
   end
 
+  def best_answers_votes
+    answers.reduce(0) do |sum, a|
+      sum + (if a.is_best_answer? then 20 else 0 end)
+    end
+  end
+
   def total_points
-    [1, questions_votes + answers_votes + points_from_votes].max
+    [1, questions_votes + answers_votes + best_answers_votes + points_from_votes].max
   end
 
   def admin?
