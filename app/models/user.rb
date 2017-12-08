@@ -41,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def total_points
-    [1, question_votes + answers_votes + points_from_votes].max
+    [1, questions_votes + answers_votes + points_from_votes].max
   end
 
   def admin?
