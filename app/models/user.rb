@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def total_points
-    max 1, points(questions, 5, -2) + points(answers, 10, -2) + points_from_votes
+    [1, points(questions, 5, -2) + points(answers, 10, -2) + points_from_votes].max
   end
 
   def admin?
