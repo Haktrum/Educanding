@@ -32,8 +32,16 @@ class User < ApplicationRecord
     -votes.where('points < 0').count
   end
 
+  def questions_votes
+    points questions, 5, -2
+  end
+
+  def answers_votes
+    points answers, 10, -2
+  end
+
   def total_points
-    [1, points(questions, 5, -2) + points(answers, 10, -2) + points_from_votes].max
+    [1, question_votes + answers_votes + points_from_votes].max
   end
 
   def admin?
