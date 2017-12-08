@@ -41,9 +41,9 @@ class User < ApplicationRecord
   end
 
   def best_answers_votes
-    answers.reduce(0) do |sum, a|
-      sum + (if a.is_best_answer? then 20 else 0 end)
-    end
+    answers.count do |a|
+      a.is_best_answer?
+    end * 20
   end
 
   def total_points
