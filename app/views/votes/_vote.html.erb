@@ -2,7 +2,7 @@
   <%= f.hidden_field :votable_id %>
   <%= f.hidden_field :votable_type %>
   <% unless vote.votable.user == current_user %>
-  <%= f.button '', :value => '-10', :name => 'vote[points]',
+  <%= f.button '', :value => '-1', :name => 'vote[points]',
   :class => "fa fa-thumbs-o-down fa-2x fa-flip-horizontal fa-fw #{'text-danger' if vote.points < 0}" %>
   <% end %>
   <%= vote.votable.points %> punto(s)
