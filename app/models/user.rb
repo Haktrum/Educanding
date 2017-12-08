@@ -23,8 +23,9 @@ class User < ApplicationRecord
     name
   end
 
-  def points votable
-    votable.joins(:votes).sum(:points)
+  def points votable, pos, neg
+    sum = votable.joins(:votes).group(:points).count(:points)
+    pos * (sum[1] || 0) + neg * (sum[-1] || 0)
   end
 
   def points_from_votes
@@ -32,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def total_points
-    points(questions) + points(answers) + points_from_votes
+    max 1, points(questions, 5, -2) + points(answers, 10, -2) + points_from_votes
   end
 
   def admin?
