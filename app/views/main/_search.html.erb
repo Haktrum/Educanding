@@ -1,8 +1,13 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $("#etiquetas").select2({
-      placeholder: "Filtrar por etiquetas."
-      })
+      placeholder: "Filtrar por etiquetas.",
+      language: {
+        noResults: function() {
+          return "No hay resultado";
+        }
+      }
+    })
   })
 </script>
 
