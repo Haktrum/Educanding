@@ -1,5 +1,6 @@
-<div class="col-md-8">
+<div class="col-md-7">
   <%= link_to tag.name, tag_path(tag) %>
+  <span class="badge">  <%= tag.questions.count %></span>
 </div>
 <% if user_signed_in? && current_user.skill?("Editar etiquetas")%>
   <div class="col-md-4 text-right">

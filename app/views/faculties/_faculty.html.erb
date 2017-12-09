@@ -1,5 +1,6 @@
 <div class="col-md-8">
   <%= link_to faculty.name, faculty_path(faculty) %>
+  <span class="badge">  <%= faculty.questions.count %></span>
 </div>
 <% if user_signed_in? && current_user.skill?("Editar facultades")%>
   <div class="col-md-4 text-right">

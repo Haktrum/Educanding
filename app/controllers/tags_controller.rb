@@ -1,7 +1,8 @@
 class TagsController < ApplicationController
   def index
     @new_tag = Tag.new if user_signed_in? && current_user.skill?("Editar etiquetas")
-    @tags = Tag.all.order("name ASC")
+    @presenter = TagsPresenter.new(params)
+
   end
 
   def create

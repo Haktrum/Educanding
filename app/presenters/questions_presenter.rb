@@ -5,7 +5,7 @@ class QuestionsPresenter
   end
 
   def questions
-    @posts ||= filter.call
+    @questions ||= filter.call
   end
 
   def filter
@@ -21,6 +21,4 @@ class QuestionsPresenter
       {}
     end
   end
-
-
 end

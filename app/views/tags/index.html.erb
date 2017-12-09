@@ -14,9 +14,17 @@
           </div>
         <% end %>
       <% end %>
+      <%= form_for @presenter.filter, url: tags_path, method: :get do |f| %>
+        <div class="col-md-8 margen-5">
+          <%= f.text_field :search, class: 'form-control' %>
+        </div>
+        <div class="col-md-4 margen-5">
+          <%= f.submit 'Buscar', class: 'btn btn-info btn-block' %>
+        </div>
+      <% end %>
     </div>
   <div class="list-group">
-    <% @tags.each do |tag| %>
+    <% @presenter.tags.each do |tag| %>
       <div class="list-group-item col-md-offset-3 col-md-6">
         <%= render tag %>
       </div>

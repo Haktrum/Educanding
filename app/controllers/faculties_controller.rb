@@ -1,7 +1,7 @@
 class FacultiesController < ApplicationController
   def index
     @new_faculty = Faculty.new if user_signed_in? && current_user.skill?("Editar facultades")
-    @faculties = Faculty.all.order("name ASC")
+    @presenter = FacultiesPresenter.new(params)
   end
 
   def show
