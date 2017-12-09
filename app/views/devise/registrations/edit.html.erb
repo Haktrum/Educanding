@@ -18,6 +18,11 @@
           </div>
 
           <div class="field margen-5">
+            <%= f.label :descripcion, class:"label-control"  %>
+            <%= f.text_area :descripcion, autofocus: true, class:"form-control" %>
+          </div>
+
+          <div class="field margen-5">
             <%= f.label :email, class:"label-control" %>
             <%= f.email_field :email, autofocus: true, class:"form-control" %>
           </div>
