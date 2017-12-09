@@ -1,24 +1,37 @@
 <%= form_for skill, remote: true do |f| %>
-  <div class="col-md-7">
-    <%= f.label :puntaje, skill.nombre, class: 'control-label' %>
-  </div>
-  <div class="col-md-2">
-    <%= f.number_field :puntaje, class: 'form-control' %>
-  </div>
-  <div class="col-md-3 text-center">
-    <%= f.button(type: "submit", remote: true,class: "btn btn-info") do %>
-      <i class="fa fa-floppy-o fa-fw"></i>
-    <% end %>
-    <% if !skill.is("Editar permisos") %>
-      <% if skill.activo %>
-        <%= link_to skill_path(skill), method: :delete, remote: true, class: 'btn btn-danger' do %>
-          <i class="fa fa-times fa-fw"></i>
-        <% end %>
-      <% else %>
+  <% if skill.activo %>
+    <div class="col-md-6">
+      <%= f.label :puntaje, skill.nombre, class: 'control-label' %>
+    </div>
+    <div class="col-md-3">
+      <%= f.number_field :puntaje, class: 'form-control' %>
+    </div>
+    <div class="col-md-3 text-center">
+      <%= f.button(type: "submit", remote: true, class: "btn btn-info") do %>
+        <i class="fa fa-floppy-o fa-fw"></i>
+      <% end %>
+      <% if !skill.is("Editar permisos") %>
         <%= link_to skill_path(skill), method: :delete, remote: true, class: 'btn btn-success' do %>
           <i class="fa fa-check fa-fw"></i>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <div class="col-md-6">
+      <%= f.label :puntaje, skill.nombre, class: 'control-label' %>
+    </div>
+    <div class="col-md-3">
+      <%= f.number_field :puntaje, disabled: true, class: 'form-control' %>
+    </div>
+    <div class="col-md-3 text-center">
+      <%= f.button(type: "submit", remote: true, disabled: true, class: "btn btn-info") do %>
+        <i class="fa fa-floppy-o fa-fw"></i>
+      <% end %>
+      <% if !skill.is("Editar permisos") %>
+        <%= link_to skill_path(skill), method: :delete, remote: true, class: 'btn btn-danger' do %>
+          <i class="fa fa-times fa-fw"></i>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
