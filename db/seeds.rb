@@ -60,13 +60,15 @@ end
 
 puts "Creando Habilidades"
 if true
-  Skill.create(nombre: "Preguntar")
-  Skill.create(nombre: "Responder")
-  Skill.create(nombre: "Comentar")
-  Skill.create(nombre: "Votar")
-  Skill.create(nombre: "Editar etiquetas")
-  Skill.create(nombre: "Editar facultades")
-  Skill.create(nombre: "Editar permisos")
+  Skill.create(nombre: "Preguntar", puntaje: 1)
+  Skill.create(nombre: "Responder", puntaje: 1)
+  Skill.create(nombre: "Votar positivo", puntaje: 15)
+  Skill.create(nombre: "Comentar", puntaje: 20)
+  Skill.create(nombre: "Votar negativo", puntaje: 100)
+  Skill.create(nombre: "Editar etiquetas", puntaje: 300)
+  Skill.create(nombre: "Editar facultades", puntaje: 500)
+  Skill.create(nombre: "Modificar contenido", puntaje: 1000)
+  Skill.create(nombre: "Editar permisos", puntaje: 2000)
 end
 
 puts "Creando Admin"

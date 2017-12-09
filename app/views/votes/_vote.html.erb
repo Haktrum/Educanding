@@ -1,12 +1,12 @@
 <%= form_for vote, remote: true, html: {name: vote.votable_type_id + '_vote'} do |f| %>
   <%= f.hidden_field :votable_id %>
   <%= f.hidden_field :votable_type %>
-  <% unless vote.votable.user == current_user %>
+  <% if vote.votable.user != current_user && current_user.skill?("Votar negativo") %>
   <%= f.button '', :value => '-1', :name => 'vote[points]',
   :class => "fa fa-thumbs-o-down fa-2x fa-flip-horizontal fa-fw #{'text-danger' if vote.points < 0}" %>
   <% end %>
   <%= vote.votable.points %> punto(s)
-  <% unless vote.votable.user == current_user %>
+  <% if vote.votable.user != current_user && current_user.skill?("Votar positivo")%>
   <%= f.button '', :value => '1', :name => 'vote[points]',
   :class => "fa fa-thumbs-o-up fa-2x fa-fw #{'text-success' if vote.points > 0}" %>
   <% end %>
