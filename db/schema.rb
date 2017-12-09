@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129140349) do
+ActiveRecord::Schema.define(version: 20171208205409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_admins_on_user_id"
+  end
 
   create_table "answer_comments", force: :cascade do |t|
     t.bigint "answer_id"
@@ -131,6 +138,7 @@ ActiveRecord::Schema.define(version: 20171129140349) do
     t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
   end
 
+  add_foreign_key "admins", "users"
   add_foreign_key "answer_comments", "answers"
   add_foreign_key "answer_comments", "users"
   add_foreign_key "answers", "questions"

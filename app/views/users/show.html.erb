@@ -2,6 +2,7 @@
 <h5 class="text-center">  <%= link_to faculty_path(@user.faculty_id) do %>
     <h6><%=Faculty.with_deleted.find(@user.faculty_id).name%></h6>
   <% end %>
+  <h5 class="text-center"><%= @user.admin? %></h5>
 <% if @user == current_user || @user.public?  %>
   <h5 class="text-center"><%= @user.email %></h5>
   <div class="panel panel-default col-md-6">

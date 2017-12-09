@@ -77,3 +77,20 @@ puts "Creando Admin"
     password: "123456789",
     password_confirmation: "123456789",
     faculty_id: 1)
+  Admin.create(user: User.find_by(email: "emir.fernandes6@gmail.com"))
+  User.create(
+    nombre: "Esteban",
+    apellido: "Mandirola",
+    email: "esteban_18_06@hotmail.com",
+    password: "qweqwe",
+    password_confirmation: "qweqwe",
+    faculty_id: 2)
+  Admin.create(user: User.find_by(email: "esteban_18_06@hotmail.com"))
+  User.create(
+    nombre: "Julian",
+    apellido: "Gauna",
+    email: "jgauna236@hotmail.com",
+    password: "julian",
+    password_confirmation: "julian",
+    faculty_id: 1)
+  Admin.create(user: User.find_by(email: "jgauna236@hotmail.com"))

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :question_comments, dependent: :destroy
   has_many :answer_comments, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_one :admin, dependent: :destroy
 
   # Validates
   validates :nombre, presence: true
@@ -51,7 +52,7 @@ class User < ApplicationRecord
   end
 
   def admin?
-    total_points > 5
+    !admin.nil?
   end
 
   def skill? nombre
