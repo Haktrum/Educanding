@@ -9,7 +9,7 @@ class FacultiesFilter
   end
 
   def call
-    faculties = Faculty.all
+    faculties = Faculty.cant_order
     faculties = filter_params faculties
   end
 

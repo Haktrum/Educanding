@@ -8,7 +8,7 @@ class Faculty < ApplicationRecord
   validates :name, presence: true, uniqueness:  { case_sensitive: false }
 
   scope :search, ->(query) { where('name LIKE :q', q: "%#{query}%")}
-  scope :cant_order, -> { left_joins(:question).group("faculties.id").order("count(faculties.id) DESC") }
+  scope :cant_order, -> { left_joins(:questions).group("faculties.id").order("count(questions.id) DESC") }
 
   def questions_count
     questions.count
