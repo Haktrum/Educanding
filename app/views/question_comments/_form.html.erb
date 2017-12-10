@@ -4,7 +4,7 @@
     <%= f.text_area :body, class: 'form-control' %>
   </div>
   <div class="col-md-2">
-    <%= f.submit 'Comentar', class: 'btn btn-success' %>
+    <%= f.submit 'Comentar', class: 'btn btn-info' %>
   </div>
   <div class="col-md-10">
     <%= render partial: 'errors', locals: { errors: @question_comment.errors.full_messages } %>

@@ -1,5 +1,13 @@
 <li class="list-group-item" id="<%= dom_id answer_comment %>">
-  <%= link_to answer_comment.user.username, user_path(answer_comment.user_id) %>
+  <div class="col-md-6">
+    <%= link_to answer_comment.user.username, user_path(answer_comment.user_id) %>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to answer_comment_path(answer_comment), method: :delete,
+       remote: true, class: "btn btn-danger btn-xs", data: {confirm: '¿Está seguro de eliminar este comentario?'} do %>
+    <i class="fa fa-times fa-fw"></i> Eliminar
+    <% end %>
+  </div>
   <div class="panel-body">
     <%= answer_comment.body %>
   </div>

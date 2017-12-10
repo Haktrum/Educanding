@@ -8,6 +8,10 @@ class AnswerCommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @deleted_comment = AnswerComment.find(params[:id]).destroy
+  end
+
   private
 
   def answer_params

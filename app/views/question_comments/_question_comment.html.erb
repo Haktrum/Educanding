@@ -1,5 +1,14 @@
 <li class="list-group-item" id="question_comment_<%= question_comment.id %>">
-  <%= link_to question_comment.user.username, user_path(question_comment.user_id) %>
+  <div class="col-md-6">
+    <%= link_to question_comment.user.username, user_path(question_comment.user_id) %>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to question_comment_path(question_comment), method: :delete,
+       remote: true, class: "btn btn-danger btn-xs", data: {confirm: '¿Está seguro de eliminar este comentario?'} do %>
+    <i class="fa fa-times fa-fw"></i> Eliminar
+    <% end if question_comment.user == current_user || (user_signed_in? && current_user.skill?("Modificar contenido")) %>
+  </div>
+
   <div class="panel-body">
     <%= question_comment.body %>
   </div>
