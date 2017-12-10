@@ -6,7 +6,7 @@
     <%= link_to answer_comment_path(answer_comment), method: :delete,
        remote: true, class: "btn btn-danger btn-xs", data: {confirm: '¿Está seguro de eliminar este comentario?'} do %>
     <i class="fa fa-times fa-fw"></i> Eliminar
-    <% end %>
+    <% end if  user_signed_in? && (answer_comment.user == current_user || current_user.skill?("Modificar contenido"))%>
   </div>
   <div class="panel-body">
     <%= answer_comment.body %>
