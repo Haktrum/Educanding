@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :questions do
     get :without_answer, on: :collection
+    get :most_answers, on: :collection
   end
   resources :questions do
     resources :best_answer, only: [:update], action: :best_answer, controller: 'answers'

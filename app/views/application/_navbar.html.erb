@@ -12,6 +12,11 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %> <!-- Hay user_current -->
+          <li>
+            <%= link_to most_answers_questions_path do %>
+            <i class="fa fa-thumbs-up fa-fw"></i> Preguntas trending
+            <% end %>
+          </li>
           <li class="dropdown"> <!-- Ultimas preguntas -->
             <%= link_to questions_path do %>
             <i class="fa fa-question-circle fa-fw"></i> Ultimas preguntas
@@ -94,6 +99,11 @@
           <li>
             <%= link_to tags_path do %>
             <i class="fa fa-tag fa-fw"></i> Etiquetas
+            <% end %>
+          </li>
+          <li>
+            <%= link_to most_answers_questions_path do %>
+            <i class="fa fa-thumbs-up fa-fw"></i> Preguntas trending
             <% end %>
           </li>
           <li>
