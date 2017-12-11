@@ -33,13 +33,15 @@ class QuestionsController < ApplicationController
     render '_best_answer.js.erb', locals: { question: question }
   end
 
+
   def most_answers
-    @questions = Question.all.order(:answers.size)
+    @questions = Question.left_joins(:answers).group('questions.id').order("count(answers) DESC")
   end
 
   def without_answer
     @questions = Question.without_answers
   end
+
 
   private
 
