@@ -13,6 +13,11 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %> <!-- Hay user_current -->
           <li>
+            <%= link_to main_index_path do %>
+            <i class="fa fa-globe fa-fw"></i> ¿Qué se puede hacer?
+            <% end %>
+          </li>
+          <li>
             <%= link_to most_answers_questions_path do %>
             <i class="fa fa-thumbs-up fa-fw"></i> Preguntas trending
             <% end %>
