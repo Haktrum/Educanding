@@ -2,9 +2,68 @@
 <h5 class="text-center">  <%= link_to faculty_path(@user.faculty_id) do %>
     <h6><%=Faculty.with_deleted.find(@user.faculty_id).name%></h6>
   <% end %>
-  <h5 class="text-center"><%= @user.admin? %></h5>
+
 <% if @user == current_user || @user.public?  %>
   <h5 class="text-center"><%= @user.email %></h5>
+  <h5 class="text-center"><%= @user.descripcion%></h5>
+<% end %>
+<% if @user == current_user %>
+<div class="panel panel-default ">
+  <table class="table">
+    <tr class="text-center">
+      <th>Tipo</th>
+      <th class="text-right">Puntos</th>
+    </tr>
+    <tr>
+      <td>Preguntas</td>
+      <td class="text-right"><%= @user.questions_votes %></td>
+    </tr>
+    <tr>
+      <td>Respuestas</td>
+      <td class="text-right"><%= @user.answers_votes %></td>
+    </tr>
+    <tr>
+      <td>Mejores respuestas</td>
+      <td class="text-right"><%= @user.best_answers_votes %></td>
+    </tr>
+    <tr>
+      <td>Por emitidos</td>
+      <td class="text-right"><%= @user.points_from_votes %></td>
+    </tr>
+    <tr class="success">
+      <td>Netos</td>
+      <td class="text-right"><%= @user.total_points %></td>
+    </tr>
+  </table>
+</div>
+<% end %>
+
+<div>
+<ul class="nav nav-tabs nav-justified  col-md-12">
+  <li role="navigation" ><a data-toggle="collapse" href="#ver_preguntas_usuario" aria-expanded="false" aria-controls="ver_question_comments">Preguntas</a></li>
+  <li role="navigation" ><a data-toggle="collapse" href="#ver_respuestas_usuario" aria-expanded="false" aria-controls="ver_question_comments">Respuestas </a></li>
+  <li role="navigation" ><a data-toggle="collapse" href="#ver_votos_usuario" aria-expanded="false" aria-controls="ver_question_comments">Votos</a></li>
+  <li role="navigation" ><a data-toggle="collapse" href="#ver_permisos_usuario" aria-expanded="false" aria-controls="ver_question_comments">Permisos Disponibles</a></li>
+</ul>
+</div>
+
+<div class="collapse" id="ver_preguntas_usuario">
+  <%= render partial:"questions/question_index", locals: {questions:  @user.questions} %>
+</div>
+
+<div class="collapse" id="ver_respuestas_usuario">
+  <%= render partial:"answers/answers_index", locals: {answers:  @user.answers} %>
+</div>
+
+<div class="collapse" id="ver_votos_usuario">
+  <%= render partial:"votes/votes", locals: {votes:  @user.votes} %>
+</div>
+
+<div class="collapse" id="ver_permisos_usuario">
+  <%= render partial:"skills/skills", locals: {skills:  @user.skills} %>
+</div>
+
+<!--
   <div class="panel panel-default col-md-6">
     <table class="table">
       <tr class="text-center">
@@ -45,4 +104,4 @@
   <div class="col-md-6 margen-5 text-center">
     <%= link_to 'Permisos', skills_user_path, class: 'btn btn-info' %>
   </div>
-<% end %>
+-->

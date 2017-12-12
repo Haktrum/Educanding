@@ -1,0 +1,7 @@
+<%= render layout: 'panel', locals: { title: "Permisos" } do %>
+<ul class='list-group'>
+  <% skills.each do |skill| %>
+  <li class='list-group-item'><%= skill.nombre %></li>
+  <% end %>
+</ul>
+<% end %>

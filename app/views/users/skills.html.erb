@@ -1,7 +1,0 @@
-<%= render layout: 'panel', locals: { title: "Permisos de #{@user.username}" } do %>
-<ul class='list-group'>
-  <% @user.skills.each do |skill| %>
-  <li class='list-group-item'><%= skill.nombre %></li>
-  <% end %>
-</ul>
-<% end %>
